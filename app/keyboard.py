@@ -5,6 +5,15 @@ from aiogram.types import (InlineKeyboardButton,  InlineKeyboardMarkup,
 
 # settings = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text='8-ой мкр', url='https://www.wildberries.ru')]])
 
+async def report_time():
+    report_time = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text='Сегогдня', callback_data=f'rt_today')],
+        [InlineKeyboardButton(text='Вчера', callback_data=f'rt_yesterday')],
+        [InlineKeyboardButton(text='Последние 7 дней', callback_data=f'rt_last_7_days')],
+        [InlineKeyboardButton(text='Произвольный период', callback_data=f'rt_period')]
+    ])
+    return report_time
+    
 
 async def inline_shops(shops: list):
     keyboard = InlineKeyboardBuilder()
@@ -14,7 +23,7 @@ async def inline_shops(shops: list):
 
 async def answer_kb():
     kb_list = [
-        [KeyboardButton(text="Да"), KeyboardButton(text="Нет") ],
+        [KeyboardButton(text="Да"), KeyboardButton(text="Нет") ]
     ]
 
     keyboard = ReplyKeyboardMarkup(keyboard=kb_list, resize_keyboard=True, one_time_keyboard=True)
